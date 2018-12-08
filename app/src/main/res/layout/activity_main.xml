@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/main_token"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="输入token"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/main_emp_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:enabled="@{!TextUtils.isEmpty(mainToken.text)}"
+            android:text="获取配置信息"
+            app:layout_constraintEnd_toStartOf="@+id/main_card_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_token" />
+
+        <Button
+            android:id="@+id/main_card_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:enabled="@{!TextUtils.isEmpty(mainToken.text)}"
+            android:text="获取打卡结果"
+            app:layout_constraintEnd_toStartOf="@+id/main_clock_in"
+            app:layout_constraintStart_toEndOf="@+id/main_emp_info"
+            app:layout_constraintTop_toTopOf="@+id/main_emp_info" />
+
+        <Button
+            android:id="@+id/main_clock_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:enabled="@{!TextUtils.isEmpty(mainToken.text)}"
+            android:text="打卡"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_card_info"
+            app:layout_constraintTop_toTopOf="@+id/main_emp_info" />
+
+        <TextView
+            android:id="@+id/main_mac"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="mac"
+            android:textColor="#333333"
+            app:layout_constraintEnd_toStartOf="@+id/main_wifi_ssid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_emp_info" />
+
+        <TextView
+            android:id="@+id/main_wifi_ssid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ssid"
+            android:textColor="#333333"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_mac"
+            app:layout_constraintTop_toTopOf="@+id/main_mac" />
+
+
+        <TextView
+            android:id="@+id/main_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="位置信息"
+            android:textColor="#333333"
+            app:layout_constraintEnd_toStartOf="@+id/main_gps"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_mac" />
+
+        <TextView
+            android:id="@+id/main_gps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="GPS信息"
+            android:textColor="#333333"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_location"
+            app:layout_constraintTop_toBottomOf="@+id/main_mac" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/main_info_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_location">
+
+            <TextView
+                android:id="@+id/main_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
